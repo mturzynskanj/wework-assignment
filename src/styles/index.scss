@@ -1,5 +1,6 @@
 
 @import 'variables';
+@import 'forms';
 body {
     background-color: $base-color;
     .inner-container {
@@ -21,34 +22,35 @@ body {
         box-shadow: $border-with-shadow;
     }
 
-    nav {
-        display: flex;
-        flex-direction: row;
-        border-top: 1px solid rgba(0,0,0, .4);
-        border-bottom: 1px solid rgba(0,0,0, .4);
-        padding: 25px 0; 
-        form {
-            margin-right: 60px;
-        }
+    .container {
+        width: 100%;
     }
 
-    .container ul {
+    .with-borders {
+        padding: 15px 0;
+        border-bottom: 1px solid $border-gray-25;
+        box-shadow: $border-with-shadow;
+    }
+
+    .inner-container ul {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         list-style: none;
     }
 
-    .container li {
+    .inner-container li {
         margin: 0;
-        max-width: 23%;
+        max-width:30%;
         list-style-type: none;
         margin-right: 4px;
         
     }
 
-    .container li img {
+    .inner-container li img {
         max-width: 100%;
-        max-height: 100px;
+        max-height: 150px;
     }
+
+    
 }

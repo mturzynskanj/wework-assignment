@@ -5,17 +5,11 @@ import api from '../api';
 
 
 function buildUrl(formData){
-    console.log('here comes formData', formData)
     let {search, limit, rating} = formData;
-
-    search = search[0] ;
-    limit = limit && limit[0] ? limit[0] : '';
-    rating = rating && rating[0] ? rating[0] : '';
-
-    console.log('search, limit rating', search, limit, rating);
-
+    search = search ;
+    limit = limit  ? limit : '';
+    rating = rating ? rating : '';
     return encodeURI('https://api.giphy.com/v1/gifs/search?api_key=a26bYHTlcSRLsx0DdEt8EY2dEg0kw8rf&q='+ search +'&limit='+ limit +'&offset=0&+ rating='+ rating +'&lang=en')
-
 
 }
 

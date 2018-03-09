@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "a1111f5adcaf08575596"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "95a253a0d1e6c47dddb4"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -64512,20 +64512,57 @@ var _react = __webpack_require__("./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactRouterDom = __webpack_require__("./node_modules/react-router-dom/es/index.js");
+
+var _reactRedux = __webpack_require__("./node_modules/react-redux/es/index.js");
+
+var _reduxDevtoolsExtension = __webpack_require__("./node_modules/redux-devtools-extension/index.js");
+
+var _reduxThunk = __webpack_require__("./node_modules/redux-thunk/lib/index.js");
+
+var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
+
+var _header = __webpack_require__("./src/components/header.js");
+
+var _header2 = _interopRequireDefault(_header);
+
 var _HomePage = __webpack_require__("./src/components/pages/HomePage.jsx");
 
 var _HomePage2 = _interopRequireDefault(_HomePage);
 
-var _reactRouterDom = __webpack_require__("./node_modules/react-router-dom/es/index.js");
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//custom components
+
+// import HomePage from './components/pages/HomePage.jsx'
+
+console.log();
+
+// const HomePage = () => (
+//     <div className="inner-container">
+//     <h2>Hello home page....</h2>
+//     </div> 
+// )
+
 var App = function App(_ref) {
-    var location = _ref.location;
+    var store = _ref.store;
     return _react2.default.createElement(
         'div',
-        { className: 'ui container' },
-        _react2.default.createElement(_reactRouterDom.Route, { location: location, path: '/', component: _HomePage2.default })
+        { className: '' },
+        _react2.default.createElement(
+            _reactRedux.Provider,
+            { store: store },
+            _react2.default.createElement(
+                _reactRouterDom.BrowserRouter,
+                null,
+                _react2.default.createElement(
+                    'div',
+                    null,
+                    _react2.default.createElement(_reactRouterDom.Route, { path: '/', component: _header2.default }),
+                    _react2.default.createElement(_reactRouterDom.Route, { path: '/', component: _HomePage2.default })
+                )
+            )
+        )
     );
 };
 
@@ -64617,7 +64654,7 @@ var loadedSearchGIFs = exports.loadedSearchGIFs = function loadedSearchGIFs() {
 
 var getTrendingGIFs = exports.getTrendingGIFs = function getTrendingGIFs(url) {
     return function (dispatch) {
-        return _api2.default.giphy.trending().then(function (data) {
+        return _api2.default.giphy.fetchInitialData().then(function (data) {
             console.log('data is.....', data);return data.data;
         }).then(function (data) {
             return dispatch(loadedTrendingGIFs(data));
@@ -64689,9 +64726,9 @@ https://api.giphy.com/v1/gifs/search?api_key=a26bYHTlcSRLsx0DdEt8EY2dEg0kw8rf&q=
 
 exports.default = {
     giphy: {
-        trending: function trending(url) {
+        fetchInitialData: function fetchInitialData(url) {
             return _axios2.default.get('https://api.giphy.com/v1/gifs/trending?api_key=a26bYHTlcSRLsx0DdEt8EY2dEg0kw8rf&limit=5').then(function (res) {
-                return res.data;
+                console.log('iside fetch initial data..', res.data);return res.data;
             });
         },
 
@@ -64759,10 +64796,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var ItemsList = function ItemsList(_ref) {
     var imagesData = _ref.imagesData;
 
+    console.log('images data....', imagesData);
     return _react2.default.createElement(
         'ul',
         null,
-        imagesData.map(function (image) {
+        imagesData && imagesData.map(function (image) {
             return _react2.default.createElement(_Item2.default, { key: image.id, original: image.images['original'] });
         })
     );
@@ -64982,6 +65020,42 @@ exports.default = SearchForm;
 
 /***/ }),
 
+/***/ "./src/components/header.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = __webpack_require__("./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Header = function Header() {
+    return _react2.default.createElement(
+        'header',
+        null,
+        _react2.default.createElement(
+            'div',
+            { className: 'inner-container' },
+            _react2.default.createElement(
+                'h1',
+                null,
+                'Giphy works '
+            )
+        )
+    );
+};
+
+exports.default = Header;
+
+/***/ }),
+
 /***/ "./src/components/messages/InlineError.js":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -65088,18 +65162,16 @@ var HomePage = function (_React$Component) {
             this.props.getSearchGIFs(formData);
         }
     }, {
-        key: 'handleClick',
-        value: function handleClick() {
+        key: 'componentDidMount',
+        value: function componentDidMount() {
             this.props.getTrendingGIFs();
         }
     }, {
         key: 'render',
         value: function render() {
-            var _this2 = this;
-
             return _react2.default.createElement(
                 'div',
-                null,
+                { className: 'inner-container' },
                 _react2.default.createElement(
                     'h2',
                     null,
@@ -65114,10 +65186,6 @@ var HomePage = function (_React$Component) {
                         'Trending  '
                     )
                 ),
-                _react2.default.createElement(_SearchForm2.default, { submit: function submit(test) {
-                        return _this2.submit(test);
-                    } }),
-                _react2.default.createElement(_SearchedList2.default, { searches: this.props.searchTerms, submitSearch: this.props.getSearchGIFs }),
                 _react2.default.createElement(_ItemsList2.default, { imagesData: this.props.data })
             );
         }
@@ -65187,36 +65255,15 @@ var _index2 = _interopRequireDefault(_index);
 
 __webpack_require__("./node_modules/semantic-ui-css/semantic.min.css");
 
-var _reactRouterDom = __webpack_require__("./node_modules/react-router-dom/es/index.js");
-
-var _reactRedux = __webpack_require__("./node_modules/react-redux/es/index.js");
-
-var _rootReducer = __webpack_require__("./src/rootReducer.js");
-
-var _rootReducer2 = _interopRequireDefault(_rootReducer);
-
-var _reduxDevtoolsExtension = __webpack_require__("./node_modules/redux-devtools-extension/index.js");
-
-var _reduxThunk = __webpack_require__("./node_modules/redux-thunk/lib/index.js");
-
-var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
-
 var _store = __webpack_require__("./src/store/index.js");
 
 var _store2 = _interopRequireDefault(_store);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// import { createStore, applyMiddleware } from 'redux';
-// const store = createStore(
-//     appReducer,
-//     composeWithDevTools(applyMiddleware(thunk))
-// )
-
 var store = (0, _store2.default)();
-console.log('what is store', store);
 
-_reactDom2.default.render('hello ', document.getElementById('root'));
+_reactDom2.default.render(_react2.default.createElement(_App2.default, { store: store }), document.getElementById('root'));
 
 // ReactDOM.render(
 //     <BrowserRouter>
@@ -65268,6 +65315,37 @@ function giphs() {
 
 /***/ }),
 
+/***/ "./src/reducers/index.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _redux = __webpack_require__("./node_modules/redux/es/index.js");
+
+var _giphs = __webpack_require__("./src/reducers/giphs.js");
+
+var _giphs2 = _interopRequireDefault(_giphs);
+
+var _searchTerms = __webpack_require__("./src/reducers/searchTerms.js");
+
+var _searchTerms2 = _interopRequireDefault(_searchTerms);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var appReducer = (0, _redux.combineReducers)({
+    data: _giphs2.default,
+    searchTerms: _searchTerms2.default
+});
+
+exports.default = appReducer;
+
+/***/ }),
+
 /***/ "./src/reducers/searchTerms.js":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -65308,37 +65386,6 @@ function searchTerms() {
 
 /***/ }),
 
-/***/ "./src/rootReducer.js":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _redux = __webpack_require__("./node_modules/redux/es/index.js");
-
-var _giphs = __webpack_require__("./src/reducers/giphs.js");
-
-var _giphs2 = _interopRequireDefault(_giphs);
-
-var _searchTerms = __webpack_require__("./src/reducers/searchTerms.js");
-
-var _searchTerms2 = _interopRequireDefault(_searchTerms);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var appReducer = (0, _redux.combineReducers)({
-    data: _giphs2.default,
-    searchTerms: _searchTerms2.default
-});
-
-exports.default = appReducer;
-
-/***/ }),
-
 /***/ "./src/store/index.js":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -65370,14 +65417,14 @@ var _reduxThunk = __webpack_require__("./node_modules/redux-thunk/lib/index.js")
 
 var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-var _rootReducer = __webpack_require__("./src/rootReducer.js");
+var _index = __webpack_require__("./src/reducers/index.js");
 
-var _rootReducer2 = _interopRequireDefault(_rootReducer);
+var _index2 = _interopRequireDefault(_index);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function configureStore(initialState) {
-    return (0, _redux.createStore)(_rootReducer2.default, (0, _redux.applyMiddleware)(_reduxThunk2.default));
+    return (0, _redux.createStore)(_index2.default, (0, _redux.applyMiddleware)(_reduxThunk2.default));
 }
 
 /***/ }),

@@ -1,0 +1,41 @@
+
+
+form {
+    display: flex;
+    flex-direction: row;
+
+    label {
+        font-size: 14px; 
+        margin-right: 5px;
+        color: rgba(0,0,0, .3);
+        display: flex;
+        align-items:center;
+    }
+    input, button {
+        border-radius: 5px;
+        border: 1px solid rgba(0,0,0, .3);
+        font-size: 14px;
+        padding: 5px;
+        &:focus{
+            border: 1px solid blue;
+            border-radius: 3px;
+        }
+    }
+
+    > div:first-child {
+        width: 40%;
+        input {
+            flex: 1;
+        }
+    }
+
+    > div {
+        display: flex;  
+        margin-right: 20px;
+    }
+
+    
+
+
+
+}

@@ -1,8 +1,19 @@
 body {
   background-color: #ccc; }
+  body .inner-container {
+    max-width: 1280px;
+    margin: 0 auto; }
   body p {
     color: yellow;
     text-decoration: underline; }
+  body header {
+    background-color: #E7EEF3;
+    color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    max-width: 100%;
+    justify-content: space-around;
+    padding: 1%;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15); }
   body nav {
     display: flex;
     flex-direction: row;

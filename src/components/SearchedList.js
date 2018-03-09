@@ -9,7 +9,7 @@ const SearchItem = ({ item, submitSearch }) => (
 const SearchedList = ({ searches, submitSearch }) => {
     console.log('submitSearch ', submitSearch)
     return (
-        <select name='search' onChange={(event) => submitSearch({'search':[event.target.value]})} >
+        <select name='search' placeholder="Your previous searches" onChange={(event) => submitSearch({'search':[event.target.value]})} >
             {
                 searches.map((item) => <SearchItem key={item} item={item} />)
             }
