@@ -37,7 +37,7 @@ export const loadedSearchGIFs = (data=[])=>{
 
 
 export const getTrendingGIFs = (url) => (dispatch) => {
-    return   api.giphy.trending().then(data => { console.log('data is.....',data); return  data.data}).then(data => dispatch(loadedTrendingGIFs(data)))
+    return   api.giphy.fetchInitialData().then(data => { console.log('data is.....',data); return  data.data}).then(data => dispatch(loadedTrendingGIFs(data)))
 }
 
 

@@ -12,6 +12,11 @@ import Header from './components/header'
 import HomePage from './components/pages/HomePage.jsx'
 
 
+console.log()
+
+
+
+
 // const HomePage = () => (
 //     <div className="inner-container">
 //     <h2>Hello home page....</h2>
@@ -24,7 +29,7 @@ const App = ({ store }) => (
             <BrowserRouter>
                 <div>
                     <Route path='/' component={Header} />
-                    <Route location={location} path="/" component={HomePage} />
+                    <Route path="/" component={HomePage} />
                 </div>
             </BrowserRouter>
         </Provider>

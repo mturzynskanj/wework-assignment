@@ -32,9 +32,10 @@ class HomePage extends React.Component {
                 <nav>
                     <button onClick={this.handleClick}>Trending  </button>
                 </nav>
-                <SearchForm submit={(test)=>this.submit(test)} />
-                <SearchedList searches = {this.props.searchTerms}  submitSearch = {this.props.getSearchGIFs}/>
-                <ItemsList imagesData={this.props.data} />
+                {/* <SearchForm submit={(test)=>this.submit(test)} />
+                <SearchedList searches = {this.props.searchTerms}  submitSearch = {this.props.getSearchGIFs}/> */}
+               {/* <ItemsList imagesData={this.props.getTrendingGIFs()} />  */}
+                {/* <ItemsList imagesData={this.props.getTrendingGIFs()} />  */}
                 
             </div>
         )
