@@ -1,0 +1,234 @@
+{
+    "data":
+    [
+        {
+            "type": "gif",
+            "id": "42ykNCllMdznWAyvCh",
+            "slug": "dcunited-soccer-celebration-42ykNCllMdznWAyvCh",
+            "url": "https://giphy.com/gifs/dcunited-soccer-celebration-42ykNCllMdznWAyvCh",
+            "bitly_gif_url": "https://gph.is/2HXQs3H",
+            "bitly_url": "https://gph.is/2HXQs3H",
+            "embed_url": "https://giphy.com/embed/42ykNCllMdznWAyvCh",
+            "username": "dcunited",
+            "source": "",
+            "rating": "g",
+            "content_url": "",
+            "source_tld": "",
+            "source_post_url": "",
+            "is_indexable": 0,
+            "is_sticker": 0,
+            "import_datetime": "2018-03-04 04:22:38",
+            "trending_datetime": "2018-03-06 03:30:01",
+            "user":
+            {
+                "avatar_url": "https://media.giphy.com/avatars/dcunited/CQe2Z7HnN9KX.png",
+                "banner_url": "https://media.giphy.com/headers/dcunited/Lx7h9A26OcOt.gif",
+                "profile_url": "https://giphy.com/dcunited/",
+                "username": "dcunited",
+                "display_name": "D.C. United",
+                "twitter": "@dcunited",
+                "is_verified": true
+            },
+            "images":
+            {
+                "fixed_height_still":
+                {
+                    "url": "https://media3.giphy.com/media/42ykNCllMdznWAyvCh/200_s.gif",
+                    "width": "360",
+                    "height": "200",
+                    "size": "50446"
+                },
+                "original_still":
+                {
+                    "url": "https://media3.giphy.com/media/42ykNCllMdznWAyvCh/giphy_s.gif",
+                    "width": "480",
+                    "height": "268",
+                    "size": "83397"
+                },
+                "fixed_width":
+                {
+                    "url": "https://media3.giphy.com/media/42ykNCllMdznWAyvCh/200w.gif",
+                    "width": "200",
+                    "height": "112",
+                    "size": "597378",
+                    "mp4": "https://media3.giphy.com/media/42ykNCllMdznWAyvCh/200w.mp4",
+                    "mp4_size": "136498",
+                    "webp": "https://media3.giphy.com/media/42ykNCllMdznWAyvCh/200w.webp",
+                    "webp_size": "216882"
+                },
+                "fixed_height_small_still":
+                {
+                    "url": "https://media3.giphy.com/media/42ykNCllMdznWAyvCh/100_s.gif",
+                    "width": "180",
+                    "height": "100",
+                    "size": "15380"
+                },
+                "fixed_height_downsampled":
+                {
+                    "url": "https://media3.giphy.com/media/42ykNCllMdznWAyvCh/200_d.gif",
+                    "width": "360",
+                    "height": "200",
+                    "size": "316879",
+                    "webp": "https://media3.giphy.com/media/42ykNCllMdznWAyvCh/200_d.webp",
+                    "webp_size": "92640"
+                },
+                "preview":
+                {
+                    "width": "183",
+                    "height": "102",
+                    "mp4": "https://media3.giphy.com/media/42ykNCllMdznWAyvCh/giphy-preview.mp4",
+                    "mp4_size": "43327"
+                },
+                "fixed_height_small":
+                {
+                    "url": "https://media3.giphy.com/media/42ykNCllMdznWAyvCh/100.gif",
+                    "width": "180",
+                    "height": "100",
+                    "size": "472378",
+                    "mp4": "https://media3.giphy.com/media/42ykNCllMdznWAyvCh/100.mp4",
+                    "mp4_size": "234867",
+                    "webp": "https://media3.giphy.com/media/42ykNCllMdznWAyvCh/100.webp",
+                    "webp_size": "180496"
+                },
+                "downsized_still":
+                {
+                    "url": "https://media3.giphy.com/media/42ykNCllMdznWAyvCh/giphy-downsized_s.gif",
+                    "width": "384",
+                    "height": "214",
+                    "size": "55530"
+                },
+                "downsized":
+                {
+                    "url": "https://media3.giphy.com/media/42ykNCllMdznWAyvCh/giphy-downsized.gif",
+                    "width": "384",
+                    "height": "214",
+                    "size": "1814669"
+                },
+                "downsized_large":
+                {
+                    "url": "https://media3.giphy.com/media/42ykNCllMdznWAyvCh/giphy.gif",
+                    "width": "480",
+                    "height": "268",
+                    "size": "2880003"
+                },
+                "fixed_width_small_still":
+                {
+                    "url": "https://media3.giphy.com/media/42ykNCllMdznWAyvCh/100w_s.gif",
+                    "width": "100",
+                    "height": "56",
+                    "size": "6150"
+                },
+                "preview_webp":
+                {
+                    "url": "https://media3.giphy.com/media/42ykNCllMdznWAyvCh/giphy-preview.webp",
+                    "width": "159",
+                    "height": "89",
+                    "size": "48616"
+                },
+                "fixed_width_still":
+                {
+                    "url": "https://media3.giphy.com/media/42ykNCllMdznWAyvCh/200w_s.gif",
+                    "width": "200",
+                    "height": "112",
+                    "size": "18905"
+                },
+                "fixed_width_small":
+                {
+                    "url": "https://media3.giphy.com/media/42ykNCllMdznWAyvCh/100w.gif",
+                    "width": "100",
+                    "height": "56",
+                    "size": "167898",
+                    "mp4": "https://media3.giphy.com/media/42ykNCllMdznWAyvCh/100w.mp4",
+                    "mp4_size": "46912",
+                    "webp": "https://media3.giphy.com/media/42ykNCllMdznWAyvCh/100w.webp",
+                    "webp_size": "78476"
+                },
+                "downsized_small":
+                {
+                    "width": "313",
+                    "height": "174",
+                    "mp4": "https://media3.giphy.com/media/42ykNCllMdznWAyvCh/giphy-downsized-small.mp4",
+                    "mp4_size": "140540"
+                },
+                "fixed_width_downsampled":
+                {
+                    "url": "https://media3.giphy.com/media/42ykNCllMdznWAyvCh/200w_d.gif",
+                    "width": "200",
+                    "height": "112",
+                    "size": "113912",
+                    "webp": "https://media3.giphy.com/media/42ykNCllMdznWAyvCh/200w_d.webp",
+                    "webp_size": "40302"
+                },
+                "downsized_medium":
+                {
+                    "url": "https://media3.giphy.com/media/42ykNCllMdznWAyvCh/giphy.gif",
+                    "width": "480",
+                    "height": "268",
+                    "size": "2880003"
+                },
+                "original":
+                {
+                    "url": "https://media3.giphy.com/media/42ykNCllMdznWAyvCh/giphy.gif",
+                    "width": "480",
+                    "height": "268",
+                    "size": "2880003",
+                    "frames": "32",
+                    "mp4": "https://media3.giphy.com/media/42ykNCllMdznWAyvCh/giphy.mp4",
+                    "mp4_size": "463406",
+                    "webp": "https://media3.giphy.com/media/42ykNCllMdznWAyvCh/giphy.webp",
+                    "webp_size": "728240",
+                    "hash": "4c1c9c0b8ab53d3a69131c3b51d5345e"
+                },
+                "fixed_height":
+                {
+                    "url": "https://media3.giphy.com/media/42ykNCllMdznWAyvCh/200.gif",
+                    "width": "360",
+                    "height": "200",
+                    "size": "1709758",
+                    "mp4": "https://media3.giphy.com/media/42ykNCllMdznWAyvCh/200.mp4",
+                    "mp4_size": "367067",
+                    "webp": "https://media3.giphy.com/media/42ykNCllMdznWAyvCh/200.webp",
+                    "webp_size": "497564"
+                },
+                "looping":
+                {
+                    "mp4": "https://media3.giphy.com/media/42ykNCllMdznWAyvCh/giphy-loop.mp4",
+                    "mp4_size": "2795482"
+                },
+                "original_mp4":
+                {
+                    "width": "479",
+                    "height": "266",
+                    "mp4": "https://media3.giphy.com/media/42ykNCllMdznWAyvCh/giphy.mp4",
+                    "mp4_size": "463406"
+                },
+                "preview_gif":
+                {
+                    "url": "https://media3.giphy.com/media/42ykNCllMdznWAyvCh/giphy-preview.gif",
+                    "width": "109",
+                    "height": "61",
+                    "size": "48044"
+                },
+                "480w_still":
+                {
+                    "url": "https://media1.giphy.com/media/42ykNCllMdznWAyvCh/480w_s.jpg",
+                    "width": "480",
+                    "height": "268"
+                }
+            },
+            "title": "soccer celebration GIF by D.C. United"
+        }
+    ],
+    "pagination":
+    {
+        "total_count": 91793,
+        "count": 1,
+        "offset": 0
+    },
+    "meta":
+    {
+        "status": 200,
+        "msg": "OK",
+        "response_id": "5a9e0e09326e43324d83ae0a"
+    }
+ }

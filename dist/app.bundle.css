@@ -1,0 +1,26 @@
+body {
+  background-color: #ccc; }
+  body p {
+    color: yellow;
+    text-decoration: underline; }
+  body nav {
+    display: flex;
+    flex-direction: row;
+    border-top: 1px solid rgba(0, 0, 0, 0.4);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    padding: 25px 0; }
+    body nav form {
+      margin-right: 60px; }
+  body .container ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style: none; }
+  body .container li {
+    margin: 0;
+    max-width: 23%;
+    list-style-type: none;
+    margin-right: 4px; }
+  body .container li img {
+    max-width: 100%;
+    max-height: 100px; }
