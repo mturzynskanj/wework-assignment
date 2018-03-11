@@ -1,6 +1,6 @@
-import { ADD_SEARCH, SELECT_SEARCH } from '../actionTypes'
+import { ADD_SEARCH, CURRENT_SEARCH } from '../actionTypes'
 
- const addSearch = (searchTerm ='') => {
+export const addSearch = (searchTerm ='') => {
     console.log('inside addSearch');
     return {
         type: ADD_SEARCH,
@@ -8,4 +8,9 @@ import { ADD_SEARCH, SELECT_SEARCH } from '../actionTypes'
     }
 }
 
-export default addSearch
+export const currentSearch = (current='')=>{
+    return {
+        type: CURRENT_SEARCH,
+        current
+    }
+}

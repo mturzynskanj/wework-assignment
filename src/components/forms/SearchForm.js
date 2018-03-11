@@ -5,15 +5,15 @@ import { connect } from 'react-redux'
 
 import SearchedList from '../SearchedList'
 import { getSearchGIFs } from '../../actions/getGifs'
-
-
+import { currentSearch } from '../../actions/searches'
 
 
 class SearchForm extends React.Component {
     constructor(props) {
+        console.log('Search Form props....', props);
         super(props);
         this.state = {
-            data: {
+            formData: {
                 search: '',
                 rating: '',
                 limit: ''
@@ -27,9 +27,8 @@ class SearchForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-
     onChange(e) {
-        this.setState({ data: { ...this.state.data, [e.target.name]: e.target.value } })
+        this.setState({ formData: { ...this.state.formData, [e.target.name]: e.target.value } })
     }
 
     validate(data) {
@@ -40,13 +39,15 @@ class SearchForm extends React.Component {
 
     handleSubmit(evt) {
         evt.preventDefault();
-        const { search, rating, limit } = this.state.data;
-        const errors = this.validate(this.state.data);
+        const { search, rating, limit } = this.state.formData;
+        const errors = this.validate(this.state.formData);
         this.setState({ errors })
         if (Object.keys(errors).length === 0) {
-            this.props.getSearchGIFs(this.state.data)
-            .then(()=>console.log('done.......... '))
-               
+            this.props.getSearchGIFs(this.state.formData)
+                .then(() => {
+                    this.props.history.push('/result?search='+ `${search}`)
+                    this.props.currentSearch(this.state.formData.search)
+                })
         }
     }
 
@@ -54,7 +55,7 @@ class SearchForm extends React.Component {
         const { data, errors, loading } = this.state
         return (
             <section className="container with-borders">
-                <div className="inner-container">
+                <div className="inner-container ui-flex">
                     <form className="inline-form" method="post" onSubmit={this.handleSubmit}>
                         <div>
 
@@ -63,9 +64,9 @@ class SearchForm extends React.Component {
                                 type="text"
                                 id="search"
                                 name="search"
-                                value={data.search}
+                                value = {this.state.formData.search}
                                 onChange={this.onChange}
-                                placeholder="Enter the search term "
+                                placeholder="Enter the search term"
                             />
 
                             {errors.search && <InlineError text={errors.search} />}
@@ -98,7 +99,7 @@ class SearchForm extends React.Component {
                             <input type='submit' value="Search" />
                         </div>
                     </form>
-                    <SearchedList searches={this.props.searchTerms} submitSearch={this.props.getSearchGIFs}/>
+                   {this.props.searchTerms.length > 0  && <SearchedList {...this.props} />}
                 </div>
             </section>
         )
@@ -108,8 +109,9 @@ class SearchForm extends React.Component {
 function mapStateToProps(state) {
     return {
         data: state.data,
-        searchTerms: state.searchTerms
+        searchTerms: state.searchTerms,
+        current: state.currentSearch
     }
 }
 
-export default connect(mapStateToProps, { getSearchGIFs })(SearchForm)
+export default connect(mapStateToProps, { currentSearch, getSearchGIFs })(SearchForm)

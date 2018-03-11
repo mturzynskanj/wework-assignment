@@ -9,7 +9,7 @@ export const CLEAR_FILTER = "CLEAR_FILTER"
 
 export const ADD_SEARCH = 'ADD_SEARCH'
 
-export const SELECT_SEARCH = 'SELECT_SEARCH'
+export const CURRENT_SEARCH = 'CURRENT_SEARCH'
 
 
 export const UPDATE_FILTER_LIST = "UPDATE_FILTER_LIST"

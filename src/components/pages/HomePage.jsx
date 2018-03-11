@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { getTrendingGIFs } from '../../actions/getGifs'
+import {getSearchGIFs, getTrendingGIFs } from '../../actions/getGifs'
 import addSearch from '../../actions/searches'
 
 
@@ -18,14 +18,22 @@ class HomePage extends React.Component {
     }
     
     componentDidMount() {
-        this.props.getTrendingGIFs()
+        if(this.props.location.search){
+            const params = new URLSearchParams(this.props.location.search);
+            console.log('params', params.get('search'));
+            this.props.getSearchGIFs({'search':params.get('search') });
+        } else {
+            this.props.getTrendingGIFs()
+        }
+        
     }
 
     render() {
         return (
             <div>
-                <SearchForm />
+                <SearchForm {...this.props}/>
                 <div className="inner-container">
+                    {this.props.current && <h4>Result search for: {this.props.current.toUpperCase()}</h4>}
                     <ItemsList imagesData={this.props.data} />
                 </div>
             </div>
@@ -33,37 +41,12 @@ class HomePage extends React.Component {
     }
 }
 
-// class HomePage extends React.Component {
-//     constructor(props) {
-//         let {data, getTrendingGIFs, getSearchGIFs} = props;
-//         super(props)
-//         this.submit = this.submit.bind(this)
-//     }
-
-//     submit(){
-//         this.getSearchGIFs()
-//     }
-
-//     render(){
-//         return(
-//             <div>
-//                  <h2>Home page</h2>
-//                 <nav>
-//                     <button onClick={() => getTrendingGIFs()}>Trending  </button>
-//                 </nav>
-//                 <SearchForm submit={this.submit} />
-//                 <ItemsList imagesData={data} />
-//             </div>
-//         )
-//     }
-
-// }
-
 function mapStateToProps(state) {
     return {
         data: state.data,
-        searchTerms: state.searchTerms
+        searchTerms: state.searchTerms,
+        current: state.currentSearch
     }
 }
 
-export default connect(mapStateToProps, { getTrendingGIFs })(HomePage)
+export default connect(mapStateToProps, {getSearchGIFs, getTrendingGIFs })(HomePage)

@@ -2,20 +2,40 @@ import React from 'react'
 
 
 
-const SearchItem = ({ item, submitSearch }) => (
-    <option name="search" value={item} >{item}</option>
-)
-
-const SearchedList = ({ searches, submitSearch }) => {
-    console.log('submitSearch ', submitSearch)
+const SearchItem = ({ item, current }) => {
+    console.log('item is ', item);
     return (
-        <select name='search' placeholder="Your previous searches" onChange={(event) => submitSearch({'search':[event.target.value]})} >
-            {
-                searches.map((item) => <SearchItem key={item} item={item} />)
-            }
-
-        </select>
+        <option name="search" value={item} selected  >{item}</option>
     )
+
 }
 
-export default SearchedList 
+// const SearchedList = ({ searches, getSearchGIFs, currentSearch}) => {
+class SearchedList extends React.Component {
+    constructor(props){
+        const { searchTerms, current, getSearchGIFs, currentSearch } = props
+        super(props)
+        this.handleChange = this.handleChange.bind(this)
+    }
+    handleChange(event){
+       this.props.getSearchGIFs({'search':event.target.value})
+       this.props.currentSearch(event.target.value)
+    }
+    render (){
+        return (
+            <div className='ui-flex'>
+                <label> Saved search terms </label>
+                <select name='search' onChange={(event) => this.handleChange(event)}>
+                    {
+                        this.props.searchTerms && this.props.searchTerms.map((item) => <SearchItem key={item} item={item} current={this.props.current} />)
+                    }
+                </select>
+            </div>
+        )
+    }
+   
+}
+
+export default SearchedList
+
+
