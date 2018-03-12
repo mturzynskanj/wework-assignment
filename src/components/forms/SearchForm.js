@@ -22,7 +22,6 @@ class SearchForm extends React.Component {
     }
 
     onChange(e) {
-        // alert('inside on Change' +  e.target.value);
         this.props.updateSearchFormData({ [e.target.name]: e.target.value })
     }
 
@@ -77,7 +76,7 @@ class SearchForm extends React.Component {
                         <div>
                             <label htmlFor="rating">Limit</label>
                             <select name='rating' value={this.props.searchForm.rating} onChange={(event) => this.onChange(event)}>>
-                                <option name="rating"  value='y' selected={this.props.searchForm.rating == 'y'} >youth</option>
+                                <option name="rating"  value='y'>youth</option>
                                 <option name="rating" value='g'>G</option>
                                 <option name="rating" >PG</option>
                                 <option name='rating' value='pg-13'>PG-13</option>
