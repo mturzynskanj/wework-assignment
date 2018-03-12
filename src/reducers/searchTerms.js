@@ -2,17 +2,15 @@ import { ADD_SEARCH } from '../actionTypes'
 
 
 export default function searchTerms(state = [], action) {
-    const { type, searchTerm } = action;
+    const { type, searchCriteria } = action;
     switch (type) {
         case ADD_SEARCH: {
-            if(  state.includes(searchTerm)){
-                return state
+            if(!state.find(item => item.search === searchCriteria.search)){
+                return [...state, searchCriteria]
             } else {
-                return [...state, searchTerm]  
+                return state;
             }
         }
-
-
         default:
             return state
     }

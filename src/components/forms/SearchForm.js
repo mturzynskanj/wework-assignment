@@ -5,20 +5,14 @@ import { connect } from 'react-redux'
 
 import SearchedList from '../SearchedList'
 import { getSearchGIFs } from '../../actions/getGifs'
-import { currentSearch } from '../../actions/searches'
+import { updateSearchFormData } from '../../actions/searchFormData'
 
 
 class SearchForm extends React.Component {
     constructor(props) {
-        console.log('Search Form props....', props);
         super(props);
+        let formData = this.props.searchForm;
         this.state = {
-            formData: {
-                search: '',
-                rating: '',
-                limit: ''
-            },
-            loading: false,
             errors: {}
         }
 
@@ -28,31 +22,32 @@ class SearchForm extends React.Component {
     }
 
     onChange(e) {
-        this.setState({ formData: { ...this.state.formData, [e.target.name]: e.target.value } })
+        this.props.updateSearchFormData({ [e.target.name]: e.target.value })
     }
 
     validate(data) {
         const errors = {};
-        if (!data.search) errors.search = "Cannot be blank"
+        if (!data.search) errors.search = "Cannot be blank";
         return errors;
     }
 
     handleSubmit(evt) {
         evt.preventDefault();
-        const { search, rating, limit } = this.state.formData;
-        const errors = this.validate(this.state.formData);
+        const errors = this.validate(this.props.searchForm);
+        console.log('errors====', errors);
         this.setState({ errors })
         if (Object.keys(errors).length === 0) {
-            this.props.getSearchGIFs(this.state.formData)
+            this.props.getSearchGIFs(this.props.searchForm)
                 .then(() => {
-                    this.props.history.push('/result?search='+ `${search}`)
-                    this.props.currentSearch(this.state.formData.search)
+                    let data = this.props.searchForm;
+                    this.props.history.push('/result?search=' + `${data.search}` + '&limit=' + `${data.limit}` + '&rating=' + `${data.rating}`)
                 })
+                .catch(err => this.setState({error: err.response.data.error}))
         }
     }
 
     render() {
-        const { data, errors, loading } = this.state
+        const { errors } = this.state
         return (
             <section className="container with-borders">
                 <div className="inner-container ui-flex">
@@ -64,7 +59,7 @@ class SearchForm extends React.Component {
                                 type="text"
                                 id="search"
                                 name="search"
-                                value = {this.state.formData.search}
+                                value={this.props.searchForm.search}
                                 onChange={this.onChange}
                                 placeholder="Enter the search term"
                             />
@@ -77,6 +72,7 @@ class SearchForm extends React.Component {
                                 type="text"
                                 id="limit"
                                 name="limit"
+                                value={this.props.searchForm.limit}
                                 onChange={this.onChange}
                                 placeholder="How many images"
                             />
@@ -89,6 +85,7 @@ class SearchForm extends React.Component {
                                 type="text"
                                 id="rating"
                                 name="rating"
+                                value={this.props.searchForm.rating}
                                 onChange={this.onChange}
                                 placeholder="Rating"
                             />
@@ -99,7 +96,7 @@ class SearchForm extends React.Component {
                             <input type='submit' value="Search" />
                         </div>
                     </form>
-                   {this.props.searchTerms.length > 0  && <SearchedList {...this.props} />}
+                    {this.props.searchTerms.length > 0 && <SearchedList {...this.props} />}
                 </div>
             </section>
         )
@@ -110,8 +107,8 @@ function mapStateToProps(state) {
     return {
         data: state.data,
         searchTerms: state.searchTerms,
-        current: state.currentSearch
+        searchForm: state.searchForm
     }
 }
 
-export default connect(mapStateToProps, { currentSearch, getSearchGIFs })(SearchForm)
+export default connect(mapStateToProps, { updateSearchFormData, getSearchGIFs })(SearchForm)

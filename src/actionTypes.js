@@ -13,3 +13,11 @@ export const CURRENT_SEARCH = 'CURRENT_SEARCH'
 
 
 export const UPDATE_FILTER_LIST = "UPDATE_FILTER_LIST"
+
+
+// search from data
+
+export const UPDATE_SEARCH_FORM ='UPDATE_SEARCH_FORM'
+
+
+

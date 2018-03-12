@@ -1,9 +1,7 @@
 import React from 'react'
-
 import Item from './Item'
 
 const ItemsList = ({ imagesData }) => {
-    console.log('images data....',imagesData)
     return (
         <ul>
             {
