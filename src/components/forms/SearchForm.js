@@ -67,7 +67,7 @@ class SearchForm extends React.Component {
                             <label htmlFor="Limit">Limit</label>
                             <select name='limit' value={this.props.searchForm.limit} onChange={(event) => this.onChange(event)}>>
                                 <option name="limit" value='5' >5</option>
-                                <option name="limit" value='10'>10</option>
+                                <option name="limit" defaultValue value='10'>10</option>
                                 <option name="limit" value='15'>15</option>
                                 <option name='limit' value='25'>20</option>
                             </select>
@@ -76,10 +76,10 @@ class SearchForm extends React.Component {
                         <div>
                             <label htmlFor="rating">Limit</label>
                             <select name='rating' value={this.props.searchForm.rating} onChange={(event) => this.onChange(event)}>>
-                                <option name="rating"  value='y'>youth</option>
-                                <option name="rating" value='g'>G</option>
-                                <option name="rating" >PG</option>
-                                <option name='rating' value='pg-13'>PG-13</option>
+                                <option name="rating" value='Y'>youth</option>
+                                <option name="rating" value='G'>G</option>
+                                <option name="rating" value='PG'>PG</option>
+                                <option name='rating' value='PG-13'>PG-13</option>
                                 <option name='rating' value='R'>R</option>
                             </select>
                         </div>
