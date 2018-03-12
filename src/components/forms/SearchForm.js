@@ -4,7 +4,7 @@ import Validator from 'validator'
 import { connect } from 'react-redux'
 
 import SearchedList from '../SearchedList'
-import { getSearchGIFs } from '../../actions/getGifs'
+import { getSearchImg } from '../../actions/getImages'
 import { updateSearchFormData } from '../../actions/searchFormData'
 
 
@@ -22,6 +22,7 @@ class SearchForm extends React.Component {
     }
 
     onChange(e) {
+        // alert('inside on Change' +  e.target.value);
         this.props.updateSearchFormData({ [e.target.name]: e.target.value })
     }
 
@@ -34,15 +35,14 @@ class SearchForm extends React.Component {
     handleSubmit(evt) {
         evt.preventDefault();
         const errors = this.validate(this.props.searchForm);
-        console.log('errors====', errors);
-        this.setState({ errors })
+        this.setState({ errors });
         if (Object.keys(errors).length === 0) {
-            this.props.getSearchGIFs(this.props.searchForm)
+            this.props.getSearchImg(this.props.searchForm)
                 .then(() => {
                     let data = this.props.searchForm;
                     this.props.history.push('/result?search=' + `${data.search}` + '&limit=' + `${data.limit}` + '&rating=' + `${data.rating}`)
                 })
-                .catch(err => this.setState({error: err.response.data.error}))
+                .catch(err => this.setState({ error: err.response.data.error }))
         }
     }
 
@@ -53,7 +53,6 @@ class SearchForm extends React.Component {
                 <div className="inner-container ui-flex">
                     <form className="inline-form" method="post" onSubmit={this.handleSubmit}>
                         <div>
-
                             <label htmlFor="Search">Search Term </label>
                             <input
                                 type="text"
@@ -63,34 +62,27 @@ class SearchForm extends React.Component {
                                 onChange={this.onChange}
                                 placeholder="Enter the search term"
                             />
-
                             {errors.search && <InlineError text={errors.search} />}
                         </div>
                         <div>
                             <label htmlFor="Limit">Limit</label>
-                            <input
-                                type="text"
-                                id="limit"
-                                name="limit"
-                                value={this.props.searchForm.limit}
-                                onChange={this.onChange}
-                                placeholder="How many images"
-                            />
-
-                            {errors.limit && <InlineError text={errors.limit} />}
+                            <select name='limit' value={this.props.searchForm.limit} onChange={(event) => this.onChange(event)}>>
+                                <option name="limit" value='5' >5</option>
+                                <option name="limit" value='10'>10</option>
+                                <option name="limit" value='15'>15</option>
+                                <option name='limit' value='25'>20</option>
+                            </select>
                         </div>
-                        <div>
-                            <label htmlFor="ratings">Ratings</label>
-                            <input
-                                type="text"
-                                id="rating"
-                                name="rating"
-                                value={this.props.searchForm.rating}
-                                onChange={this.onChange}
-                                placeholder="Rating"
-                            />
 
-                            {errors.rating && <InlineError text={errors.rating} />}
+                        <div>
+                            <label htmlFor="rating">Limit</label>
+                            <select name='rating' value={this.props.searchForm.rating} onChange={(event) => this.onChange(event)}>>
+                                <option name="rating"  value='y' selected={this.props.searchForm.rating == 'y'} >youth</option>
+                                <option name="rating" value='g'>G</option>
+                                <option name="rating" >PG</option>
+                                <option name='rating' value='pg-13'>PG-13</option>
+                                <option name='rating' value='R'>R</option>
+                            </select>
                         </div>
                         <div>
                             <input type='submit' value="Search" />
@@ -111,4 +103,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { updateSearchFormData, getSearchGIFs })(SearchForm)
+export default connect(mapStateToProps, { updateSearchFormData, getSearchImg })(SearchForm)

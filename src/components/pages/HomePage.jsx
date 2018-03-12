@@ -1,28 +1,34 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import {getSearchGIFs, getTrendingGIFs } from '../../actions/getGifs'
+import {getSearchImg, getTrendingImg } from '../../actions/getImages'
 import {updateSearchFormData} from '../../actions/searchFormData'
-import addSearch from '../../actions/searches'
+import archiveSearch from '../../actions/archiveSearch'
 
 import ItemsList from '../ItemsList'
-import SearchForm from '../forms/SearchForm'
 import SearchedList from '../SearchedList'
+import SearchForm from '../forms/SearchForm'
 
 
 class HomePage extends React.Component {
     constructor(props) {
         super(props);
+        this.buildQueryString = this.buildQueryString.bind(this)
     }
-    
+
     componentDidMount() {
         if(this.props.location.search){
-            const params = new URLSearchParams(this.props.location.search);
-            this.props.getSearchGIFs({'search':params.get('search'), 'limit':params.get('limit'), 'rating': params.get('rating') });
-            this.props.updateSearchFormData({'search':params.get('search')})
+            this.props.getSearchImg(this.buildQueryString());
+            this.props.updateSearchFormData(this.buildQueryString());
         } else {
-            this.props.getTrendingGIFs()
+            this.props.getTrendingImg()
         }      
+    }
+
+    buildQueryString (){  
+        const params = new URLSearchParams(this.props.location.search);
+        const queryStr = {'search': params.get('search'), 'limit': params.get('limit'), 'rating': params.get('rating')}
+        return queryStr;
     }
 
     render() {
@@ -41,9 +47,8 @@ class HomePage extends React.Component {
 function mapStateToProps(state) {
     return {
         data: state.data,
-        current: state.currentSearch,
         searchForm: state.searchForm
     }
 }
 
-export default connect(mapStateToProps, { updateSearchFormData, getSearchGIFs, getTrendingGIFs })(HomePage)
+export default connect(mapStateToProps, { updateSearchFormData, getSearchImg, getTrendingImg })(HomePage)

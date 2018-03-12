@@ -1,15 +1,13 @@
 import { combineReducers } from 'redux'
-import giphs from './giphs'
+import loadImages from './loadImages'
 import searchTerms from './searchTerms'
-import currentSearch from './currentSearch'
 import searchForm from './searchForm'
 
 
 
 const appReducer = combineReducers({
-    data: giphs,
+    data: loadImages,
     searchTerms: searchTerms,
-    currentSearch: currentSearch,
     searchForm: searchForm
 })
 

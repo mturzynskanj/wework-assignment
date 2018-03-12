@@ -1,13 +1,12 @@
 import React from 'react'
 
 const SearchItem = ({ item, current }) => {
-    console.log('item is ', item);
     return (
         <option name="search" value={item.search}  >{item.search}</option>
     )
 }
 
-// const SearchedList = ({ searches, getSearchGIFs, currentSearch}) => {
+
 class SearchedList extends React.Component {
     constructor(props){
         const { searchTerms, current, updateSearchFormData, getSearchGIFs } = props
@@ -15,7 +14,7 @@ class SearchedList extends React.Component {
         this.handleChange = this.handleChange.bind(this)
     }
     handleChange(event){
-       this.props.getSearchGIFs({'search':event.target.value});
+       this.props.getSearchImg({'search':event.target.value});
        this.props.history.push('/result?search='+ event.target.value)
        this.props.updateSearchFormData({search:event.target.value});
     }

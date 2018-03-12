@@ -1,11 +1,11 @@
-import { ADD_SEARCH } from '../actionTypes'
+import { ARCHIVE_SEARCH } from '../actionTypes'
 
 
 export default function searchTerms(state = [], action) {
     const { type, searchCriteria } = action;
     switch (type) {
-        case ADD_SEARCH: {
-            if(!state.find(item => item.search === searchCriteria.search)){
+        case ARCHIVE_SEARCH: {
+            if (!state.find(item => item.search === searchCriteria.search)) {
                 return [...state, searchCriteria]
             } else {
                 return state;

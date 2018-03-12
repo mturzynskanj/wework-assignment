@@ -12,16 +12,7 @@ import Header from './components/header'
 import HomePage from './components/pages/HomePage.jsx'
 
 
-console.log()
 
-
-
-
-// const HomePage = () => (
-//     <div className="inner-container">
-//     <h2>Hello home page....</h2>
-//     </div> 
-// )
 
 const App = ({ store }) => (
     <div className=''>

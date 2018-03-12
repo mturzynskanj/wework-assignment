@@ -5,8 +5,6 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var babelPolyfill = require('babel-polyfill');
 
-const ASSET_PATH= process.env.ASSET_PATH || '/' ; 
-
 var BUILD_DIR = path.join(__dirname, 'dist');
 var APP_DIR = path.join(__dirname, 'src')
 
@@ -14,8 +12,8 @@ module.exports = {
     entry: ['babel-polyfill', APP_DIR + '/index.js'],
     output: {
         path: BUILD_DIR,
-        filename: 'app.bundle.js',
-        publicPath: ASSET_PATH
+        filename: 'app.bundle.js'
+        //publicPath: ASSET_PATH
     },
     devServer: {
         //contentBase: path.join(__dirname, 'dist'),
@@ -23,13 +21,10 @@ module.exports = {
         port: 8080,
         hot: true,
         historyApiFallback: true
-        // stats: 'errors-only',
-        // open : true
     },
 
     module: {
         rules: [
-
             {
                 test: /\.css$/,
                 use: ['style-loader','css-loader']
@@ -65,7 +60,6 @@ module.exports = {
                 test: /\.(eot|svg|ttf|woff|woff2)$/,
                 loader: 'file-loader?name=public/fonts/[name].[ext]'
             }
-
         ]
     },
 
@@ -89,11 +83,7 @@ module.exports = {
             filename: 'app.bundle.css',
             disable: false,
             allChunks: true
-        }),
-        new webpack.DefinePlugin({
-            'process.env.ASSET_PATH': JSON.stringify(ASSET_PATH)
-        })
-       
+        }) 
     ]
 };
 
