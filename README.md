@@ -22,5 +22,5 @@ How it works:
             searchTerms  -    for the archives search terms
             searchForm   -    for user's form inputs. 
 
-            
+5.  I used the location object  to update the url with the search query ( this was not required)  so user could bookmark this search    
 
